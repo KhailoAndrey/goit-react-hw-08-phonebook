@@ -1,9 +1,16 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-import { Button, TextField, Box, Container, Typography } from '@mui/material';
 import { useState } from 'react';
-import styled from 'styled-components';
-// import LogBG from '../../img/bg-login.jpg';
+
+import {
+  Label,
+  RegBox,
+  RegBtn,
+  RegForm,
+  RegInput,
+  Title,
+} from './RegisterForm.styled';
+
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const initialState = {
@@ -37,97 +44,53 @@ export const RegisterForm = () => {
   };
 
   return (
-    <HomePage style={{ backgroundImage: '#fff' }}>
-      <Container component="div" maxWidth="xs">
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            backgroundColor: 'white',
-            padding: '20px',
-            boxShadow: ' rgb(33 33 33) 0px 2px 10px 1px',
-          }}
-        >
-          <Typography
-            variant="h4"
-            style={{ fontFamily: 'Fira Sans Condensed', fontWeight: '600' }}
-          >
-            Sign Up
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              label="User name"
-              name="name"
-              autoComplete="name"
-              autoFocus
-              value={name}
-              variant="standard"
-              onChange={handleChange}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              type="email"
-              value={email}
-              variant="standard"
-              onChange={handleChange}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              autoComplete="current-password"
-              value={password}
-              variant="standard"
-              onChange={handleChange}
-            />
+    <RegBox>
+      <Title>
+        Sign Up
+      </Title>
+      <RegForm component="form" onSubmit={handleSubmit}>
+        <Label>Name</Label>
+        <RegInput
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleChange}
+          placeholder="Введите имя"
+          required
+          fullWidth
+          autoComplete="name"
+          autoFocus
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Имя может состоять только из букв, апострофа, тире и пробелов."
+        />
+        <Label>Email Address</Label>
+        <RegInput
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleChange}
+          required
+          fullWidth
+          placeholder="Введите Email"
+          pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+          autoComplete="email"
+        />
+        <Label>Password</Label>
+        <RegInput
+          type="password"
+          name="password"
+          value={password}
+          onChange={handleChange}
+          required
+          fullWidth
+          placeholder="Введите пароль"
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
+          title="Пароль должен содержать как минимум 8 символов, включая хотя бы одну заглавную букву, одну строчную букву и одну цифру."
+          autoComplete="current-password"
+        />
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2, color: '#0f1111', background: '#87CEFA	' }}
-            >
-              Sign Up
-            </Button>
-          </Box>
-        </Box>
-      </Container>
-    </HomePage>
-    // <form onSubmit={handleSubmit} autoComplete="off">
-    //   <label>
-    //     Username
-    //     <input type="text" name="name" />
-    //   </label>
-    //   <label>
-    //     Email
-    //     <input type="email" name="email" />
-    //   </label>
-    //   <label>
-    //     Password
-    //     <input type="password" name="password" />
-    //   </label>
-    //   <button type="submit">Register</button>
-    // </form>
+        <RegBtn type="submit">Sign Up</RegBtn>
+      </RegForm>
+    </RegBox>
   );
 };
-const HomePage = styled.div`
-   {
-    background-size: cover;
-    overflow -x: hidden;
-    padding-top: 64px;
-    background-repeat: no-repeat;
-    height: calc(100vh - 70px);
-  }
-`;

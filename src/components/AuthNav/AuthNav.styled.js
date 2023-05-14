@@ -6,17 +6,14 @@ export const AuthNavStyled = styled(NavLink)`
   font-size: 22px;
   font-weight: 700;
   color: black;
-  border-bottom: 2px solid black;
   margin-left: 20px;
   margin-right: 20px;
 
   &:hover {
-    color: #87cefa;
-    border-bottom: 2px solid #87cefa;
+    color: green;
   }
 
   &.active {
-    color: white;
-    border-bottom: 2px solid white;
+    color: #FF4F00;
   }
 `;

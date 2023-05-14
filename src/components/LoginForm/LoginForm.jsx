@@ -1,120 +1,88 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import { Button, TextField, Box, Container, Typography } from '@mui/material';
 import { useState } from 'react';
-import styled from 'styled-components';
-// import LogBG from '../../img/bg-login.jpg';
+import {
+  Label,
+  LoginBox,
+  LoginBtn,
+  LoginInput,
+  Title,
+} from './LoginForm.styled';
 
 export const LoginForm = () => {
-    const dispatch = useDispatch();
-    const initialState = {
-        email: '',
-        password: '',
-    };
+  const dispatch = useDispatch();
+  const initialState = {
+    email: '',
+    password: '',
+  };
 
-    const [state, setState] = useState({ ...initialState });
-    const { email, password } = state;
+  const [state, setState] = useState({ ...initialState });
+  const { email, password } = state;
 
-    const handleChange = ({ target }) => {
-        const { name, value } = target;
-        setState(prevState => ({
-            ...prevState,
-            [name]: value,
-        }));
-    };
-    const handleSubmit = e => {
-        e.preventDefault();
-        const form = e.currentTarget;
-        dispatch(
-            logIn({
-                email: form.elements.email.value,
-                password: form.elements.password.value,
-            })
-        );
-        form.reset();
-    };
-
-    return (
-        <HomePage style={{ backgroundImage: '#fff' }}>
-            <Container component="div" maxWidth="xs">
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        backgroundColor: 'white',
-                        padding: '20px',
-                        boxShadow: ' rgb(33 33 33) 0px 2px 10px 1px',
-                    }}
-                >
-                    <Typography
-                        variant="h4"
-                        style={{ fontFamily: 'Fira Sans Condensed', fontWeight: '600' }}
-                    >
-                        Log In
-                    </Typography>
-                    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            autoFocus
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            type="email"
-                            value={email}
-                            variant="standard"
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            autoComplete="current-password"
-                            value={password}
-                            variant="standard"
-                            onChange={handleChange}
-                        />
-
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{
-                                mt: 3,
-                                mb: 2,
-                                color: '#0f1111',
-                                background: '#87CEFA	',
-                            }}
-                        >
-                            Log In
-                        </Button>
-                    </Box>
-                    {/* <form onSubmit={handleSubmit} autoComplete="off">
-          <label>
-            Email
-            <input type="email" name="email" />
-          </label>
-          <label>
-            Password
-            <input type="password" name="password" />
-          </label>
-          <button type="submit">Log In</button>
-        </form> */}
-                </Box>
-            </Container>
-        </HomePage>
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    setState(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      logIn({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
     );
-};
+    form.reset();
+  };
 
-const HomePage = styled.div`
-  background-size: cover;
-  overflow-x: hidden;
-  padding-top: 64px;
-  background-repeat: no-repeat;
-  height: calc(100vh - 70px);
-`;
+  return (
+    <LoginBox>
+      <Title>Log In</Title>
+      <LoginForm component="form" onSubmit={handleSubmit}>
+        <Label>Email Address</Label>
+        <LoginInput
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleChange}
+          required
+          fullWidth
+          autoFocus
+          autoComplete="email"
+          placeholder="Введите Email"
+          pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+        />
+        <Label>Password</Label>
+        <LoginInput
+          type="password"
+          name="password"
+          required
+          value={password}
+          onChange={handleChange}
+          fullWidth
+          placeholder="Введите пароль"
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
+          title="Пароль должен содержать как минимум 8 символов, включая хотя бы одну заглавную букву, одну строчную букву и одну цифру."
+          autoComplete="current-password"
+        />
+
+        <LoginBtn
+          type="submit"
+          fullWidth
+          variant="contained"
+          sx={{
+            mt: 3,
+            mb: 2,
+            color: '#0f1111',
+            background: '#87CEFA	',
+          }}
+        >
+          Log In
+        </LoginBtn>
+      </LoginForm>
+    </LoginBox>
+  );
+};

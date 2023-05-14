@@ -10,7 +10,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: url('./images/back.jpg');
   background-repeat:repeat-y ;
-  background-size: 100vw;
+  background-size: cover;
   background-attachment: fixed;
 }
 

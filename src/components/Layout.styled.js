@@ -15,4 +15,5 @@ export const WrapperHeader = styled.header`
   gap: 70px;
   padding: 10px;
   box-shadow: rgb(33 33 33) 0px 2px 10px 1px;
+  border-radius: 20px;
 `;

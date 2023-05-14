@@ -1,19 +1,15 @@
 import {
   HomeTitle,
-  WrapperHomePage,
-  HomePage,
-  Wrapper,
+  WrapperHomePage,    
 } from './HomePage.styled';
 import { useAuth } from 'redux/auth/selectors';
 
 export default function Home() {
   const { isLoggedIn } = useAuth();
   return (
-    <HomePage >
-      <WrapperHomePage>
-        <Wrapper>
+          <WrapperHomePage>        
           {isLoggedIn ? (
-            <HomeTitle>
+            <HomeTitle style={{ color: 'green' }}>
               Go to the "Contacts" tab to see the list of contacts
             </HomeTitle>
           ) : (
@@ -22,8 +18,7 @@ export default function Home() {
               credentials or register
             </HomeTitle>
           )}
-        </Wrapper>
       </WrapperHomePage>
-    </HomePage>
+    
   );
 }

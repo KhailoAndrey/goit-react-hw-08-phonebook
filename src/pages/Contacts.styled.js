@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Main = styled.div`
-position: absolute;
+/* position: absolute; */
+padding: 10px;
 top: 5%;
 margin-left: 43vw;
 /* margin-top: 7vw; */

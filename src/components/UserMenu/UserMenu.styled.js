@@ -3,16 +3,16 @@ import styled from "styled-components";
 export const StyledName = styled.span`
   margin-right: 15px;
   font-size: 22px;
-  color: green;
+  color: black;
   font-weight: 700;
 `;
 
 export const BtnLogOut = styled.button`
 border-radius: 4px;
 border-color: green;
-color: red;
+color: black;
 font-size: 18px;
-background-color: blanchedalmond;
+background-color: chocolate;
 cursor: pointer;
 &:hover {
   scale: 1.2;

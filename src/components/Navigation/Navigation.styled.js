@@ -7,10 +7,10 @@ export const NavStyled = styled(NavLink)`
   font-weight: 700;
   color: black;
   &.active {
-    color: blue;
+    color: #FF4F00;
   }
   &:hover {
     color: green;
-    border-bottom: 2px solid red;
+    scale: 1.2;
   }
 `;
