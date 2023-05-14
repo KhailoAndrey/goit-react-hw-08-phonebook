@@ -69,19 +69,7 @@ export const LoginForm = () => {
           autoComplete="current-password"
         />
 
-        <LoginBtn
-          type="submit"
-          fullWidth
-          variant="contained"
-          sx={{
-            mt: 3,
-            mb: 2,
-            color: '#0f1111',
-            background: '#87CEFA	',
-          }}
-        >
-          Log In
-        </LoginBtn>
+        <LoginBtn type="submit">Log In</LoginBtn>
       </LoginForm>
     </LoginBox>
   );

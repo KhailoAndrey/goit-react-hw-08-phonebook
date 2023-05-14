@@ -1,20 +1,16 @@
-import { RotatingLines } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import { WrapperLoader } from './Loader.styled';
 
-const sizes = {
-  sm: 40,
-  md: 60,
-  lg: 80,
-};
-
-export const Loader = ({ size = 'lg' }) => {
+export const Loader = () => {
   return (
     <WrapperLoader>
-      <RotatingLines
-        strokeColor="grey"
-        strokeWidth="4"
-        width={sizes[size]}
-        animationDuration="1.2"
+      <ThreeDots
+        height="30"
+        width="180"
+        radius="10"
+        color="#4fa94d"
+        ariaLabel="three-dots-loading"
+        visible={true}
       />
     </WrapperLoader>
   );
