@@ -2,13 +2,13 @@ import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';
-import { RestrictedRoute } from './RestrictedRoute';
 import { useAuth } from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
 import { Layout } from './Layout';
 import { Loader } from './Loader/Loader';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { Toaster } from 'react-hot-toast';
+import PublicRoute from './PublicRoute';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/RegistrationUser'));
@@ -33,25 +33,25 @@ export function App() {
           <Route
             path="/register"
             element={
-              <RestrictedRoute
-                redirectTo="/contacts"
-                component={<RegisterPage />}
-              />
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
             }
           />
           <Route
             path="/login"
             element={
-              <RestrictedRoute
-                redirectTo="/contacts"
-                component={<LoginPage />}
-              />
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
             }
           />
           <Route
             path="/contacts"
             element={
-              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+              <PrivateRoute>
+                <ContactsPage />
+              </PrivateRoute>
             }
           />
           <Route path="*" element={<NotFoundPage />} />

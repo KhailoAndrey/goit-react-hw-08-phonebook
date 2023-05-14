@@ -5,12 +5,12 @@ import { Filter } from '../components/Filter/Filter';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/option';
 import { Main, Message } from './Contacts.styled';
-import { AuthNav } from '../components/AuthNav/AuthNav';
+import { Navigation } from 'components/Navigation/Navigation';
 
-export function App() {
+export default function Contacts() {
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector(
-    state => state.contacts.contacts
+    state => state.contacts
   );
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function App() {
   }, [dispatch]);
   return (
     <Main>
-      <AuthNav />
+      <Navigation />
       <ContactForm />
       <Filter />
       {isLoading && <Message>Загрузка...</Message>}

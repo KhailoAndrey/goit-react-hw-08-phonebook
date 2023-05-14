@@ -6,19 +6,11 @@ export const NavStyled = styled(NavLink)`
   font-size: 22px;
   font-weight: 700;
   color: black;
-  border-bottom: 2px solid black;
-
-  &:hover {
-      text-decoration: none;
-
-    color: green;
-    border-bottom: 2px solid #87cefa;
-  }
-
   &.active {
-      text-decoration: none;
-
     color: blue;
-    border-bottom: 2px solid white;
+  }
+  &:hover {
+    color: green;
+    border-bottom: 2px solid red;
   }
 `;
