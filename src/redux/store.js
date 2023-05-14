@@ -3,7 +3,7 @@ import { contactsReducer } from './AddContactsSlice';
 import { filterReducer } from './filterSlice';
 import { combineReducers } from 'redux';
 import {
-  // persistStore,
+  persistStore,
   persistReducer,
   FLUSH,
   REHYDRATE,
@@ -14,8 +14,6 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
-import persistStore from 'redux-persist/es/persistStore';
-
 
 const authPersistConfig = {
   key: 'auth',
@@ -31,15 +29,13 @@ const rootReducer = combineReducers({
 });
 
 export const store = configureStore({
-  reducer: {
-    contacts: rootReducer,
-    middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
-  },  
+  reducer: rootReducer,  
+  middleware: getDefaultMiddleware =>
+  getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
 });
 
 export const persistor = persistStore(store);

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AdContacts } from '../components/Fetch/AdContacts';
-import { delContacts } from '../components/Fetch/delContacts';
-import { getContacts } from '../components/Fetch/getContacts';
+import { AdContacts } from '../Fetch/AdContacts';
+import { delContacts } from '../Fetch/delContacts';
+import { getContacts } from '../Fetch/getContacts';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
