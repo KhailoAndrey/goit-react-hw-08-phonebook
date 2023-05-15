@@ -48,7 +48,7 @@ export const RegisterForm = () => {
       <Title>
         Sign Up
       </Title>
-      <RegForm component="form" onSubmit={handleSubmit}>
+      <RegForm onSubmit={handleSubmit}>
         <Label>Name</Label>
         <RegInput
           type="text"
