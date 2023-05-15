@@ -5,6 +5,7 @@ import {
   Label,
   LoginBox,
   LoginBtn,
+  LoginForma,
   LoginInput,
   Title,
 } from './LoginForm.styled';
@@ -41,7 +42,7 @@ export const LoginForm = () => {
   return (
     <LoginBox>
       <Title>Log In</Title>
-      <LoginForm onSubmit={handleSubmit}>
+      <LoginForma onSubmit={handleSubmit}>
         <Label>Email Address</Label>
         <LoginInput
           type="email"
@@ -70,7 +71,7 @@ export const LoginForm = () => {
         />
 
         <LoginBtn type="submit">Log In</LoginBtn>
-      </LoginForm>
+      </LoginForma>
     </LoginBox>
   );
 };

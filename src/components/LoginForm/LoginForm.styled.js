@@ -20,7 +20,7 @@ text-align: center;
 /* background-color: red; */
 `;
 
-export const LoginForm = styled.form`
+export const LoginForma = styled.form`
 /* background-color: aqua; */
 display: flex;
 flex-direction: column;
