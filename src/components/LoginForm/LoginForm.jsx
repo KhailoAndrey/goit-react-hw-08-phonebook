@@ -41,7 +41,7 @@ export const LoginForm = () => {
   return (
     <LoginBox>
       <Title>Log In</Title>
-      <LoginForm component="form" onSubmit={handleSubmit}>
+      <LoginForm onSubmit={handleSubmit}>
         <Label>Email Address</Label>
         <LoginInput
           type="email"
