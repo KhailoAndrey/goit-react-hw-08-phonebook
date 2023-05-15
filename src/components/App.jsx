@@ -33,25 +33,28 @@ export function App() {
           <Route
             path="/register"
             element={
-              <PublicRoute>
-                <RegisterPage />
-              </PublicRoute>
+              <PublicRoute
+                redirectTo="/contacts"
+                component={<RegisterPage />}
+              ></PublicRoute>
             }
           />
           <Route
             path="/login"
             element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
+              <PublicRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+              ></PublicRoute>
             }
           />
           <Route
             path="/contacts"
             element={
-              <PrivateRoute>
-                <ContactsPage />
-              </PrivateRoute>
+              <PrivateRoute
+                redirectTo="/login"
+                component={<ContactsPage />}
+              ></PrivateRoute>
             }
           />
           <Route path="*" element={<NotFoundPage />} />
